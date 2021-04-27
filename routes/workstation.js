@@ -103,7 +103,7 @@ router.route('/update/:id').post((req, res) => {
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
-app.get("/count", (req,res)=>{
+router.get("/count", (req,res)=>{
 
   workStation.countDocuments({},(err, count) => {
       if (err) {
