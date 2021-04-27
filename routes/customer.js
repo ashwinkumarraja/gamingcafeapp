@@ -177,6 +177,18 @@ router.post("/bookSlot",(req,res)=> {
       .catch(err => res.status(400).json('Error: ' + err));
   });
 });
+app.get("/count", (req,res)=>{
+
+  Customer.countDocuments({},(err, count) => {
+      if (err) {
+        res.status(500).send({status:false, error:err})
+      } 
+      else {
+        res.status(200).send({"customers": count});
+      }
+    }	
+  );
+});
 
 
 module.exports = router;
