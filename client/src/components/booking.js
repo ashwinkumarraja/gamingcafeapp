@@ -115,7 +115,7 @@ class Booking extends Component {
       async bookSlot(msg,num,date){
         if(msg.slots[num].isBooked){alert("Slot not available");
         return}
-        alert("Pay Rs."+msg.rent+" to confirm booking.")
+        alert("Pay Rs."+msg.rent+" to confirm booking for " + date + " " + msg.slots[num].startTime);
         alert("Slot Booked!")
         console.log(typeof(num));
             console.log(msg.slots[num].isBooked);

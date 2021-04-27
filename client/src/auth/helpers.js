@@ -65,7 +65,8 @@ export const isAdmin = () => {
             if (localStorage.getItem('user')) {
 
                 const admin = JSON.parse(localStorage.getItem('user'));
-                return admin.name == 'Sajith Kumar';
+                
+                return (admin.name == ('Sajith Kumar') || admin.name == ('Ashwin Kumar Raja'));
             } else {
                 return false;
             }

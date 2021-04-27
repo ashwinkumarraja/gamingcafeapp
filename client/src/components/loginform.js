@@ -59,7 +59,7 @@ export default function LoginForm({ history }) {
     name: ''
 });
   const handleLogin = (response) =>{
-    console.log(response);
+    console.log(  );
     console.log(response.profileObj);
     console.log(response.profileObj.email);
     const customer = {
@@ -98,7 +98,7 @@ const handleSignin = (response) =>{
   return (
     <div class="contact-form">
         <h1>Login</h1>
-        <div class="textbox">
+        {/* <div class="textbox">
           <i class="fas fa-user"></i>
           <input type="text" placeholder="Username"/>
       </div>
@@ -106,7 +106,7 @@ const handleSignin = (response) =>{
           <i class="fas fa-lock"></i>
           <input type="password" placeholder="Password"/>
       </div>
-        <input onClick = {handleSignin()} type="button" class="btn" value="Sign in" />
+        <input onClick = {handleSignin()} type="button" class="btn" value="Sign in" /> */}
 
         <GoogleLogin
         clientId ="204064659282-mu672f9s1mdp5n3l68shedq6kba102kr.apps.googleusercontent.com"

@@ -24,7 +24,7 @@ class Navbar2 extends Component {
                     <a className="nav-link" href="/staff">Staff</a>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" href="/request">Requests</a>
+                    <a className="nav-link" href="/requests">Requests</a>
                   </li>
                   <li className="nav-item">
                 <LogoutButton/>

@@ -13,6 +13,7 @@ import { authenticate, isAuth , isAdmin } from '../auth/helpers';
 import Inventory from '../components/inventory';
 import Request from '../components/request'
 import SignIn2 from '../components/loginform2'
+import Staff from '../components/staff'
 // <Route path ="/login" component = {LoginForm} />
 //         <Route path ="/booking" component = {Booking} />
 //         <Route path ="/dashboard" component = {Dashboard} />
@@ -66,8 +67,13 @@ function Routes() {
         // auth={authApi.auth}
       />
       <RouteProtectedAdmin
-        path="/request"
+        path="/requests"
         component={Request}
+        // auth={authApi.auth}
+      />
+      <RouteProtectedAdmin
+        path="/staff"
+        component={Staff}
         // auth={authApi.auth}
       />
           
