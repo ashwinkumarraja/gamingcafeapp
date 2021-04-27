@@ -66,7 +66,7 @@ export default function LoginForm2({ history }) {
       name: response.profileObj.name,
       email: response.profileObj.email
     }
-    axios.post('http://localhost:5000/customer/glogin',customer)
+    axios.post('/customer/glogin',customer)
        .then(res => console.log(res.data));
        alert("Logged In!")
        authenticate(response,customer, () => {

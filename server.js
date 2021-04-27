@@ -30,12 +30,25 @@ app.use(express.json());
 
 
 const uri = process.env.MONGODB_URI;
-mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }
-);
-const connection = mongoose.connection;
-connection.once('open', () => {
-  console.log("MongoDB database connection established successfully");
-})
+// mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }
+// );
+mongoose
+      .connect(uri, {
+        useNewUrlParser: true,
+        useCreateIndex: true,
+        useFindAndModify: false,
+        useUnifiedTopology: true,
+      })
+      .then(() => {
+        console.log('Database connected successfully!');
+      })
+      .catch((err) => {
+        console.log('Error connecting with error code:', err);
+      });
+// const connection = mongoose.connection;
+// connection.once('open', () => {
+//   console.log("MongoDB database connection established successfully");
+// })
 
 // module.exports = {
 //   IS_PROD: process.env.NODE_ENV === 'production',
@@ -109,6 +122,7 @@ app.use('/report', reportRouter);
 const requestRouter = require('./routes/request');
 app.use('/request',requestRouter);
 // const router = require('express').Router();
+
 app.use(express.static('client/build'));
 app.use(function(req, res) {
 	res.sendFile(path.join(__dirname, './client/build/index.html'));
