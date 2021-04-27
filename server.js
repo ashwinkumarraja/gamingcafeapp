@@ -33,7 +33,7 @@ const uri = process.env.MONGODB_URI;
 // mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }
 // );
 mongoose
-      .connect(uri, {
+      .connect( process.env.MONGODB_URI, {
         useNewUrlParser: true,
         useCreateIndex: true,
         useFindAndModify: false,
