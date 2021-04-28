@@ -8,7 +8,7 @@ class UserBooking
     componentDidMount(){
         console.log("Printing email from parent"+this.props.userEmail);
         const newemail=this.props.userEmail
-        const apiUrl = '/customer/';
+        const apiUrl = ' /customer/';
         fetch(apiUrl)
         .then((response) => response.json())
         .then((data) => this.setState({customer: data.slice(0).filter(function(obj){return obj.email==newemail })[0],slots:data.slice(0).filter(function(obj){return obj.email==newemail })[0].slotsBooked},() => {
@@ -20,9 +20,10 @@ class UserBooking
     render() {
         var data = this.state.slots;
         return (<div>
-                    <h>Hi {this.state.customer.name}</h>
-                    <p>Your email is {this.state.customer.email}</p>
+
+                    <div style={{display: 'flex',  justifyContent:'center'}}>
                     <h4>Your Bookings:</h4>
+                    </div>
                     {/* <p>{this.state.customer}</p> */}
                     <div>
                         <ul id="removeBullets" className="productGrid flex-container wrap">

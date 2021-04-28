@@ -20,13 +20,13 @@ export default function LogoutButton() {
     const handleSignout = () => {
         // console.log("asd " + authApi.auth  
       signout(() => {
-        axios.delete('/customer/logout')
+        axios.delete(' /customer/logout')
        .then(res => console.log(res.data));
        history.push('/signin')
       });
     };
     return (
-         <button onClick={handleSignout}>Logout</button>
+         <a className="nav-link" onClick={handleSignout}>Logout</a>
         // <Button imageUrl="https://demos.telerik.com/kendo-ui/content/shared/icons/sports/snowboarding.png">Image icon</Button>
         // <button><img src='./img/1.png'  onClick={handleSignout} /></button>
         

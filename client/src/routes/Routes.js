@@ -26,8 +26,6 @@ function Routes() {
   return (
     <Switch>
       
-
-      
       <RouteRegisteration
         path="/signin"
         component={SignIn}
@@ -78,8 +76,10 @@ function Routes() {
         component={Staff}
         // auth={authApi.auth}
       />
-      <RouteRedirect
-        path ='/'
+       <RouteRedirection
+        path="/"
+        // component={CustomerRequest}
+        // auth={authApi.auth}
       />
           
       
@@ -108,18 +108,6 @@ function Routes() {
 //     />
 //   );
 // };
-const RouteRedirect = ({ component: Component, ...rest }) => {
-    
-  return (
-    <Route
-      {...rest}
-      render={(props) =>
-        //(!isAdmin() ? <Component {...props} /> : <Redirect to="/dashboard" />)
-        ( <Redirect to="/signin" />)
-      }
-    />
-  );
-};
 const RouteRegisteration = ({ component: Component, ...rest }) => {
     
     return (
@@ -128,6 +116,18 @@ const RouteRegisteration = ({ component: Component, ...rest }) => {
         render={(props) =>
           //(!isAdmin() ? <Component {...props} /> : <Redirect to="/dashboard" />)
           (!isAuth() ? <Component {...props} /> : <Redirect to="/booking" />)
+        }
+      />
+    );
+  };
+  const RouteRedirection = ({ component: Component, ...rest }) => {
+    
+    return (
+      <Route
+        {...rest}
+        render={(props) =>
+          //(!isAdmin() ? <Component {...props} /> : <Redirect to="/dashboard" />)
+          ( <Redirect to="/signin" />)
         }
       />
     );

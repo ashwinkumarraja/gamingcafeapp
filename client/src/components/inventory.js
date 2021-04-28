@@ -18,15 +18,15 @@ class Inventory extends Component {
             workstation:{}};
         this.bookSlot = this.bookSlot.bind(this);
       }
-    //'http://localhost:5000/workstation'
+    //' /workstation'
      onDelete(d){
         console.log(d);
         console.log(d._id);
-        axios.delete(`/workstation/${d._id}`)
+        axios.delete(` /workstation/${d._id}`)
     .then(res => {
       console.log(res);
       console.log(res.data);
-       axios.get(`/workstation/`)
+       axios.get(` /workstation/`)
     .then(res => {
       const systems = res.data;
       this.setState({ systems:systems });
@@ -34,7 +34,7 @@ class Inventory extends Component {
     })
   }
     componentDidMount() {
-        const apiUrl = '/workstation/';
+        const apiUrl = ' /workstation/';
         fetch(apiUrl)
           .then((response) => response.json())
           .then((data) => this.setState({systems: data.slice(0)}));
@@ -51,7 +51,7 @@ class Inventory extends Component {
             msg1.slots[num].isBooked=true;
             console.log(msg1);
             console.log(msg1._id);
-            axios.post('/workstation/update/'+msg1._id,msg1)
+            axios.post(' /workstation/update/'+msg1._id,msg1)
            .then(res => console.log(res.data));
       }
       onSubmit = () => {
@@ -59,18 +59,24 @@ class Inventory extends Component {
         var pic=document.getElementById("pic").value
         var type= document.getElementById("type").value
         var rent=document.getElementById("rent").value
-        if(name!=""&&type!=""&&rent!="" ){
+        var date=document.getElementById("date").value
+        if(!this.isValidDate(date)){
+            alert("Enter the correct date in yyyy-mm-dd format   ");
+            return;
+        }
+        if(name!=""&&type!=""&&rent!=""&&pic!="" ){
          
         const newRequest ={
           name: name,
           pic: pic,
           type: type,
-            rent: Number(rent)
+            rent: Number(rent),
+            date:date
         }
-        axios.post('/workstation/add',newRequest)
+        axios.post(' /workstation/add',newRequest)
              .then(res => console.log(res.data));
              alert("Request Added!");
-             axios.get(`/workstation/`)
+             axios.get(` /workstation/`)
              .then(res => {
                const systems = res.data;
                this.setState({ systems:systems  });
@@ -79,6 +85,14 @@ class Inventory extends Component {
                 alert("please enter name of workstation and type of workstation")
             }
         }
+                isValidDate(dateString) {
+            var regEx = /^\d{4}-\d{2}-\d{2}$/;
+            if(!dateString.match(regEx)) return false;  // Invalid format
+            var d = new Date(dateString);
+            var dNum = d.getTime();
+            if(!dNum && dNum !== 0) return false; // NaN value, Invalid date
+            return d.toISOString().slice(0,10) === dateString;
+          }
     render() { 
         var data=this.state.systems;
         return (
@@ -92,7 +106,7 @@ class Inventory extends Component {
             <div class="textbox">
             <input type="text" placeholder="Type of workstation" id="type" />
             </div>
-        
+            <div class="textbox"><input type="text" placeholder="Date in YYYY-MM-DD format ONLY" id="date" /></div>
             <div class="textbox"><input type="text" placeholder="Url of picture of workstation" id="pic" /></div>
             <div class="textbox"><input type="text" placeholder="Rent" id="rent" /></div>
             
