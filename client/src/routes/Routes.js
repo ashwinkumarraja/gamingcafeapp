@@ -25,9 +25,7 @@ function Routes() {
   
   return (
     <Switch>
-      <RouteRedirect
-        path ='/'
-      />
+      
 
       
       <RouteRegisteration
@@ -80,6 +78,9 @@ function Routes() {
         component={Staff}
         // auth={authApi.auth}
       />
+      <RouteRedirect
+        path ='/'
+      />
           
       
     </Switch>
@@ -114,7 +115,7 @@ const RouteRedirect = ({ component: Component, ...rest }) => {
       {...rest}
       render={(props) =>
         //(!isAdmin() ? <Component {...props} /> : <Redirect to="/dashboard" />)
-        ( <Redirect to="/booking" />)
+        ( <Redirect to="/signin" />)
       }
     />
   );
