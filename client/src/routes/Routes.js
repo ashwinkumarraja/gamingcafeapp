@@ -25,6 +25,10 @@ function Routes() {
   
   return (
     <Switch>
+      <RouteRedirect
+        path ='/'
+      />
+
       
       <RouteRegisteration
         path="/signin"
@@ -103,6 +107,18 @@ function Routes() {
 //     />
 //   );
 // };
+const RouteRedirect = ({ component: Component, ...rest }) => {
+    
+  return (
+    <Route
+      {...rest}
+      render={(props) =>
+        //(!isAdmin() ? <Component {...props} /> : <Redirect to="/dashboard" />)
+        ( <Redirect to="/booking" />)
+      }
+    />
+  );
+};
 const RouteRegisteration = ({ component: Component, ...rest }) => {
     
     return (
