@@ -4,6 +4,14 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import * as serviceWorker from './serviceWorker';
+
+import ChartsEmbedSDK from '@mongodb-js/charts-embed-dom';
+const sdk = new ChartsEmbedSDK({
+  baseUrl: 'https://charts.mongodb.com/charts-project-0-cmave',
+});
+const chart = sdk.createChart({
+  chartId: '775c5bb8-17b2-479c-840e-5e4639d7f644',
+});
 ReactDOM.render(
   <React.StrictMode>
     <App />

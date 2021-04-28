@@ -33,7 +33,7 @@ const uri = process.env.MONGODB_URI;
 // mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }
 // );
 mongoose
-      .connect( process.env.MONGODB_URI, {
+      .connect(process.env.MONGODB_URI, {
         useNewUrlParser: true,
         useCreateIndex: true,
         useFindAndModify: false,
@@ -72,9 +72,10 @@ app.use(session({
   saveUninitialized: false,
   resave: false,
   store: MongoDBStore({
-    mongooseConnection: mongoose.connection,
+    // mongooseConnection: mongoose.connection,
     collection: 'session',
-    ttl: parseInt(SESS_LIFETIME) / 1000
+    ttl: parseInt(SESS_LIFETIME) / 1000,
+    uri:process.env.MONGODB_URI
   }),
   cookie: {
     sameSite: true,
@@ -122,7 +123,6 @@ app.use('/report', reportRouter);
 const requestRouter = require('./routes/request');
 app.use('/request',requestRouter);
 // const router = require('express').Router();
-
 app.use(express.static('client/build'));
 app.use(function(req, res) {
 	res.sendFile(path.join(__dirname, './client/build/index.html'));
