@@ -5,3 +5,5 @@ An easy to use portal to book slots for a specific workstation or console on a s
 
 
 Website live on - https://gamingcafe-app.herokuapp.com/
+
+Demo - https://youtu.be/hRpcv1Eb_9U
